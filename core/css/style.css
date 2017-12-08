@@ -4,13 +4,14 @@ General styles
 ****************/
 
 body{
+	background-color: #2C2F34;
 	font-family: 'Lato', sans-serif;
-	color: #000;
+	color: #99AAB5;
 	padding-top: 8em;
 }
 
 .area{
-	border-bottom: 1px solid #f5f5f5;
+	border-bottom: 1px solid #261038;
 	padding-bottom: 3em;
 	margin-bottom: 3em;
 }
@@ -38,8 +39,8 @@ a {
 		border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
 	}
-	.form-group:last-child
-	.form-control {
+	.form-group:last-child 
+	.form-control {				
 		border-bottom-right-radius: 3px;
 		border-bottom-left-radius: 3px;
 		top: -2px;
@@ -62,8 +63,8 @@ h2 {
 }
 
 .btn-primary {
-	background-color:#174391;
-	border-color:#174391;
+	background-color:#261038;
+	border-color:#261038;
 }
 
 /****************
@@ -71,7 +72,7 @@ Navigation
 ****************/
 
 .navbar-default{
-	background-color: #fff;
+	background-color: #282828;
 }
 
 #logo-img {
@@ -80,11 +81,11 @@ Navigation
 }
 
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
-	color:#174391;
+	color:#6a0193;
 }
 
 .navbar-default .navbar-brand {
-	color:#174391;
+	color:#6a0193;
 }
 
 /****************
@@ -128,7 +129,7 @@ Pokedex display
 .flex-item {
 	-webkit-flex: 1 auto;
 	flex: 1 0 100px;
-	border-bottom: 1px solid #f5f5f5;
+	border-bottom: 1px solid #99AAB5;
 	padding-bottom: 5px;
 	margin-bottom: 5px;
 	text-align: center;
@@ -148,7 +149,7 @@ Pokedex display
 img.unseen{
 	-webkit-filter: grayscale(1);
 	filter: grayscale(1);
-	opacity:0.5;
+	opacity:0.2;
 }
 
 .pokemon-single a:hover img	 {
@@ -188,7 +189,7 @@ Pokémon single pages
 }
 
 .nav-links a {
-	color:#777;
+	color:#99AAB5;
 	transition:color .25s ease-in;
 }
 
@@ -202,7 +203,7 @@ Pokémon single pages
 }
 
 .nav-links a:hover {
-	color:#174391;
+	color:#261038;
 }
 
 .stats-data {
@@ -276,13 +277,13 @@ Also private joke ;)
 }
 
 .big-data a {
-	color:#777;
+	color:#99AAB5;
 	transition:color .25s ease-in;
 }
 
 .big-data a:hover {
 	text-decoration:none;
-	color:#174391;
+	color:#261038;
 }
 
 .big-data a:focus {
@@ -318,15 +319,15 @@ Website footer
 ****************/
 
 footer {
-	background-color:#174391;
-	margin-top:4em;
-	padding-bottom: 4em;
-	color:white;
+	background-color:#261038;
+	margin-top:3em;
+	padding-bottom: 3em;
+	color:darkgrey;
 }
 
 footer a {
-	color:white;
-	border-bottom:1px white solid;
+	color:#FFFFFF;
+	border-bottom:1px grey solid;
 	text-decoration: none;
 }
 
@@ -337,7 +338,7 @@ footer .big-icon {
 }
 
 footer a svg {
-	border-bottom:0px white solid;
+	border-bottom:0px #99AAB5 solid;
 	text-decoration: none;
 }
 
@@ -379,7 +380,7 @@ div#gymInfos{
 	border-radius: 5px;
 	border: 2px solid grey;
 	z-index:9000;
-	background-color: #ffffff;
+	background-color: #2C2F34;
 }
 
 div#circleImage:before {
@@ -411,6 +412,7 @@ div#circleImage {
 div#gymName{
 	position: absolute;
 	left:120px;
+	color:#f1f1f1;
 	top: 10px;
 	width: 225px;
 	font-size: large;
@@ -439,7 +441,7 @@ div#levelMeter .progress{
 	top: 2px;
 }
 .label-line {
-	background: #000;
+	background: #262626;
 	height:20px;
 	width:1px;
 	top: -2px;
@@ -491,11 +493,11 @@ trainers details styles
 trainers search styles
 ****************/
 
-#searchTrainer button, #searchGyms button {
+#searchTrainer button {
 	height: 40px;
 }
 
-#searchTrainer input, #searchGyms input {
+#searchTrainer input {
 	height: 40px;
 }
 
@@ -540,15 +542,15 @@ raids styles
 }
 
 #raidsContainer .current, #raidsContainer .upcoming {
-	color: #fff;
+	color: #99AAB5;
 	border-radius: 1em;
 	padding: 1px 6px 2px 6px;
 }
 #raidsContainer .current {
-	background-color: #fe6d3c;
+	background-color: #7d56a5;
 }
 #raidsContainer .upcoming {
-	background-color: #f98796;
+	background-color: #7d56a5;
 }
 
 #raidsContainer .pokemon-details {
@@ -556,7 +558,7 @@ raids styles
 }
 
 #raidsContainer td.level {
-    color: #fff;
+    color: #99AAB5;
     text-shadow: 0 0 6px black;
 }
 
