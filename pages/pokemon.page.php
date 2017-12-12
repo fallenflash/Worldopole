@@ -313,11 +313,25 @@
 							?>
 
 							<div>
-								<img src="core/img/arrow.png" alt="Arrow" class="img">
+								<img src="core/img/arrow<?=$obj->array_sufix?>.png" alt="Arrow" class="img">
 								<p class="pkmn-name">
 									<?php
-									echo $obj->candies . ' ' . $locales->POKEMON_CANDIES;
-									
+                                    if (isset($obj->candies)) {
+                                        echo $obj->candies . ' ' . $locales->POKEMON_CANDIES;
+                                    } else {
+                                        echo '? ' . $locales->POKEMON_CANDIES;
+                                    }
+
+									if (isset($obj->item)) {
+										$itemName = 'ITEM_' . $obj->item;
+										echo '<br>+ ' . $locales->$itemName;
+									} elseif (isset($obj->info)) {
+										$infoName = 'INFO_' . $obj->info;
+										echo '<br>(' . $locales->$infoName . ')';
+									}
+									else {
+										echo '<br> </br>';
+									}
 									?>
 								</p>
 							</div>
