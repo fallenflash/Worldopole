@@ -839,7 +839,7 @@ switch ($request) {
 
 		break;
 
-
+		
 	case 'pokemon_slider_init':
 		$req = "SELECT MIN(disappear_time) AS min, MAX(disappear_time) AS max FROM pokemon";
 		$result 	= $mysqli->query($req);
