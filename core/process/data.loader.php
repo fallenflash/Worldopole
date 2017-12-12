@@ -128,13 +128,6 @@ if (!empty($page)) {
 			$pokemon->tree = $trees->$candy_id;
 
 
-			// Set tree
-			// ----------
-
-			$candy_id = $pokemon->candy_id;
-			$pokemon->tree = $trees->$candy_id;
-
-
 			// Get Dabase results
 			//-------------------
 
