@@ -22,7 +22,7 @@ body{
 
 a {
 	transition:all .25s ease-in;
-	color: :#480f77;
+	color: :#803399;
 }
 
 .input-group-vertical {
@@ -82,11 +82,12 @@ Navigation
 }
 
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
-	color:#480f77;
+	color:#803399;
 }
 
 .navbar-default .navbar-brand {
-	color:#480f77;
+	color:#803399;
+	font-weight: Bold;
 }
 
 /****************
@@ -278,7 +279,7 @@ Also private joke ;)
 }
 
 .big-data a {
-	color: #370b5b;
+	color: #803399;
 }
 
 .big-data a:hover {
