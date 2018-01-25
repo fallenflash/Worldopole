@@ -1,21 +1,15 @@
-# OS generated files #
-######################
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
+#OS generated files#######################
+.DS_Store.
+DS_Store?._
+*.Spotlight-V100.Trashes
 ehthumbs.db
 Thumbs.db
-*~
-
-# Project config files #
-########################
-
+*~#Project config files#########################
 config.php
 /core/json/variables.json
 /core/json/variables.secret.json
 /.htaccess
+
 /install/done.lock
 /core/json/pokemon.stats.json
 /core/json/gym.stats.json
@@ -26,3 +20,8 @@ config.php
 /core/json/captcha.stats.json
 /core/json/nests.stats.json
 analyticstracking.php
+core/css/style.css
+core/json/locales/en/translations.json
+/crontab.bat
+/crontab.vbs
+core/pokemons/

@@ -313,7 +313,7 @@
 							?>
 
 							<div>
-								<img src="core/img/arrow.png" alt="Arrow" class="img">
+								<img src="core/img/arrow<?=$obj->array_sufix?>.png" alt="Arrow" class="img">
 								<p class="pkmn-name">
 									<?php
                                     if (isset($obj->candies)) {

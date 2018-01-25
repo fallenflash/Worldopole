@@ -6,12 +6,12 @@ General styles
 body{
 	background-color: #2C2F34;
 	font-family: 'Lato', sans-serif;
-	color: #99AAB5;
+	color: #b9b6c1;
 	padding-top: 8em;
 }
 
 .area{
-	border-bottom: 1px solid #261038;
+	border-bottom: 1px solid #7934bf;
 	padding-bottom: 3em;
 	margin-bottom: 3em;
 }
@@ -19,9 +19,11 @@ body{
 .big-padding {
 	padding-bottom: 4em;
 }
-
+a focus,
+a hover,
 a {
 	transition:all .25s ease-in;
+	color: #17aebf;
 }
 
 .input-group-vertical {
@@ -39,8 +41,8 @@ a {
 		border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
 	}
-	.form-group:last-child 
-	.form-control {				
+	.form-group:last-child
+	.form-control {
 		border-bottom-right-radius: 3px;
 		border-bottom-left-radius: 3px;
 		top: -2px;
@@ -63,8 +65,8 @@ h2 {
 }
 
 .btn-primary {
-	background-color:#261038;
-	border-color:#261038;
+	background-color:#0b96a8;
+	border-color:#0b96a8;
 }
 
 /****************
@@ -72,8 +74,8 @@ Navigation
 ****************/
 
 .navbar-default{
-	background-color: #282828;
-}
+	background-color: #23272A;
+	}
 
 #logo-img {
 	animation: shake 1s;
@@ -81,11 +83,12 @@ Navigation
 }
 
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
-	color:#6a0193;
+	color:#7934bf;
 }
 
 .navbar-default .navbar-brand {
-	color:#6a0193;
+	color:#7934bf;
+	font-weight: Bold;
 }
 
 /****************
@@ -129,7 +132,7 @@ Pokedex display
 .flex-item {
 	-webkit-flex: 1 auto;
 	flex: 1 0 100px;
-	border-bottom: 1px solid #99AAB5;
+	border-bottom: 1px solid #7934bf;
 	padding-bottom: 5px;
 	margin-bottom: 5px;
 	text-align: center;
@@ -189,7 +192,7 @@ Pokémon single pages
 }
 
 .nav-links a {
-	color:#99AAB5;
+	color#17aebf;
 	transition:color .25s ease-in;
 }
 
@@ -203,7 +206,7 @@ Pokémon single pages
 }
 
 .nav-links a:hover {
-	color:#261038;
+	color:#0b96a8;
 }
 
 .stats-data {
@@ -277,13 +280,12 @@ Also private joke ;)
 }
 
 .big-data a {
-	color:#99AAB5;
-	transition:color .25s ease-in;
+	color: #07668c;
 }
 
 .big-data a:hover {
 	text-decoration:none;
-	color:#261038;
+	color:#17aebf;
 }
 
 .big-data a:focus {
@@ -293,9 +295,10 @@ Also private joke ;)
 .big-data big {
 	font-size:3rem;
 	font-weight:normal;
+	
 }
 
-.big-data h3 {
+.big-data h3 {1
 	margin:0;
 }
 
@@ -310,8 +313,8 @@ Also private joke ;)
 /* Quick fix to allow looping between teams */
 
 .teams .big-data:nth-child(2) {
-	border-right:1px lightgray solid;
-	border-left:1px lightgray solid;
+	border-right:1px #7934bf solid;
+	border-left:1px #7934bf solid;
 }
 
 /****************
@@ -319,27 +322,16 @@ Website footer
 ****************/
 
 footer {
-	background-color:#261038;
+	background-color:#07668c;
 	margin-top:3em;
 	padding-bottom: 3em;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 	line-height: 1.2;
->>>>>>> Stashed changes
-=======
-	line-height: 1.2;
->>>>>>> Stashed changes
-=======
-	line-height: 1.2;
->>>>>>> Stashed changes
-	color:darkgrey;
+	color:#bbbbbb;
 }
 
 footer a {
-	color:#FFFFFF;
-	border-bottom:1px grey solid;
+	color:#ffffff;
+	border-bottom:1px #221f73 solid;
 	text-decoration: none;
 }
 
@@ -350,7 +342,7 @@ footer .big-icon {
 }
 
 footer a svg {
-	border-bottom:0px #99AAB5 solid;
+	border-bottom:1px #221f73 solid;
 	text-decoration: none;
 }
 
@@ -392,7 +384,7 @@ div#gymInfos{
 	border-radius: 5px;
 	border: 2px solid grey;
 	z-index:9000;
-	background-color: #2C2F34;
+	background-color: #2c2f34;
 }
 
 div#circleImage:before {
@@ -404,7 +396,7 @@ div#circleImage:before {
 	bottom: 100%;
 	border-left: 14px solid transparent;
 	border-right: 14px solid transparent;
-	border-bottom: 35px solid #fff;
+	border-bottom: 35px solid #2C2F33;
 	pointer-events: none;
 }
 
@@ -424,7 +416,6 @@ div#circleImage {
 div#gymName{
 	position: absolute;
 	left:120px;
-	color:#f1f1f1;
 	top: 10px;
 	width: 225px;
 	font-size: large;
@@ -474,11 +465,18 @@ div#levelMeter .progress{
 
 div#gymPrestige{
 	position: absolute;
-	left:120px;
+	left: 120px;
 	top: 70px;
 	font-size: 14px;
-	
 }
+
+div#gymHistory{
+	position: absolute;
+	left: 220px;
+	top: 70px;
+	font-size: 14px;
+}
+
 div#gymLastScanned{
 	position: absolute;
 	left:120px;
@@ -505,11 +503,11 @@ trainers details styles
 trainers search styles
 ****************/
 
-#searchTrainer button {
+#searchTrainer button, #searchGyms button {
 	height: 40px;
 }
 
-#searchTrainer input {
+#searchTrainer input, #searchGyms input {
 	height: 40px;
 }
 
@@ -549,12 +547,12 @@ raids styles
 	font-size: 2em;
 	font-weight: bold;
 	position: absolute;
-	left: 23px;
-	top: 10px;
+	left: 22px;
+	top: 8px;
 }
 
 #raidsContainer .current, #raidsContainer .upcoming {
-	color: #99AAB5;
+	color: #7ca29f;
 	border-radius: 1em;
 	padding: 1px 6px 2px 6px;
 }
@@ -570,7 +568,7 @@ raids styles
 }
 
 #raidsContainer td.level {
-    color: #99AAB5;
+    color: #7ca29f;
     text-shadow: 0 0 6px black;
 }
 
@@ -584,8 +582,8 @@ raids styles
 	}
 	#raidsContainer .pokemon-single span {
 		font-size: 1.5em;
-		left: 17px;
-		top: 8px;
+		left: 16px;
+		top: 6px;
 	}
 	#raidsContainer td:nth-child(6) {
 		display: none;
