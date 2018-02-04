@@ -177,6 +177,10 @@ img.unseen{
 	opacity:0.2;
 }
 
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px 6px;
+}
+
 .pokemon-single a:hover img	 {
 	background-image: url('../img/blue-hover.png');
 	background-size: 100% 100%;
@@ -610,8 +614,57 @@ raids styles
 	#raidsContainer td:nth-child(6) {
 		display: none;
 	}
-	#raidsTable>tbody>tr>td, #raidsTable>tbody>tr>th, #raidsTable>tfoot>tr>td, #raidsTable>tfoot>tr>th, #raidsTable>thead>tr>td, #raidsTable>thead>tr>th {
-		padding: 6px
+}
+
+#gymsContainer td {
+	vertical-align: middle;
+	line-height: 2em;
+}
+
+#gymsContainer .gymhistory table td:first-child, #gymsContainer .gymhistory table th:first-child {
+	padding-left: 10px;
+}
+
+#gymsContainer td.level {
+	width: 68px;
+}
+
+#gymsContainer td.level img {
+	margin-right: .5em;
+}
+
+#gymsContainer td.loss {
+	color: rgb(210,118,118);
+}
+
+#gymsContainer td.gain {
+	color: rgb(62,150,62);
+}
+
+#gymsContainer td ul {
+	margin-bottom: 0;
+	min-height: 65px;
+	line-height: initial;
+}
+
+#gymsContainer td ul li {
+	width: 5em;
+	overflow: hidden;
+	text-align: center;
+	border-radius: 5px;
+	margin-right: 2px;
+}
+
+#gymsTable > thead > tr > th:nth-child(1) {
+	width: 6.5em;
+}
+
+@media (max-width: 768px) {
+	#gymsContainer td ul li {
+		display: none;
+	}
+	#gymsTable > thead > tr > th:last-child, #gymsTable > tbody > tr:nth-child(2n-1) > td:last-child {
+		display: none;
 	}
 }
 

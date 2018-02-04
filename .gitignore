@@ -33,3 +33,5 @@ core/json/locales/en/translations.json
 /crontab.bat
 /crontab.vbs
 core/pokemons/
+
+core/gifs/
