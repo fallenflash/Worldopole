@@ -741,3 +741,11 @@ raids styles
 	text-decoration: none;
 	color: inherit;
 }
+@media (max-width: 410px) {
+    #commandspic {
+    max-width:275px;
+	margin: 10px;
+	float: none !important;
+	}
+}
+	
