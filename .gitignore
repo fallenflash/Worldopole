@@ -37,7 +37,12 @@ core/pokemons/
 core/gifs/
 pages/whgmap.page.php
 pages/TheCollector.page.php
-
-pages/whgmap\.page\.php
-
-pages/TheCollector\.page\.php
+wiki/
+pages/news.page.php
+pages/whgmap.page.php
+worldopole/
+pages/TheCollector.page.php
+beta/
+beta2/
+images/
+gifs/

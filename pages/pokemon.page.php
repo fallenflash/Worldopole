@@ -61,7 +61,6 @@
 <div class="row">
 	<div class="col-md-2 col-xs-4">
 		<div id="poke-img" style="padding-top:15px;margin-bottom:1em;">
-			<img class="media-object img-responsive" src="https://teamrocketmap.ddns.net/gifs/<?= $pokemon->id?>.gif" alt="<?= $pokemon->name ?> model" >
 		</div>
 	</div>
 

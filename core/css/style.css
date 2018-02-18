@@ -28,6 +28,7 @@ a {
 
 .input-group-vertical {
 	margin-bottom: 10px;
+}
 	.form-control {
 		border-radius: 0;
 	}
@@ -47,7 +48,7 @@ a {
 		border-bottom-left-radius: 3px;
 		top: -2px;
 	}
-}
+
 /****************
 Typography
 ****************/
@@ -218,7 +219,7 @@ Pokémon single pages
 }
 
 .nav-links a {
-	color#17aebf;
+	color:#17aebf;
 	transition:color .25s ease-in;
 }
 
@@ -324,7 +325,7 @@ Also private joke ;)
 	
 }
 
-.big-data h3 {1
+.big-data h3 {
 	margin:0;
 }
 
@@ -749,3 +750,47 @@ raids styles
 	}
 }
 	
+	
+.navbar-nav li .dropdown{
+	padding: 0 15px;
+}
+	
+.navbar-nav li .dropdown li{
+	list-style-type: none;
+	list-style-image: none;
+	display: block;
+	width: 100%;
+	padding: 3px 12px;
+	text-decoration: none !important;
+}
+
+.navbar-nav li .dropdown li a{
+	display: block;
+	padding: 3px 12px;
+	color: #777 !important;
+}
+
+.navbar-nav li .dropdown li a:hover{
+	color: #7934bf !important;
+	background-color: #2C2F34;
+}
+	
+@media (min-width: 768px) {
+	
+	.navbar-nav li .dropdown{
+		position: absolute;
+		top: 50px;
+		background-color: #23272A;
+		border: 1px solid #ccc;
+		border-top: none;
+		padding: 10px 0 15px;
+		min-width: 200px;
+		left: -20px;
+		display: none;
+	}
+	
+	.navbar-nav li:hover .dropdown{
+		display: block;
+	}
+	
+}
