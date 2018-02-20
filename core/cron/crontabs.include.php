@@ -26,13 +26,11 @@ $config->system->forced_lang = 'en';
 
 include_once(SYS_PATH.'/core/process/timezone.loader.php');
 
+// Load Query Manager
+// ###################
 
-# MySQL 
-$mysqli = new mysqli(SYS_DB_HOST, SYS_DB_USER, SYS_DB_PSWD, SYS_DB_NAME, SYS_DB_PORT);
-
-if ($mysqli->connect_error != '') {
-	die('MySQL connect error');
-}
+include_once __DIR__ . '/../process/queries/QueryManager.php';
+$manager = QueryManager::current();
 
 
 // Update dashboard data
@@ -51,6 +49,9 @@ if (is_file($pokestop_file)) {
 }
 if (is_file($pokemonstats_file)) {
 	$pokedatas	= json_decode(file_get_contents($pokemonstats_file), true);
+}
+if (is_file($pokedex_counts_file)) {
+	$pokecountdatas	= json_decode(file_get_contents($pokedex_counts_file), true);
 }
 if (is_file($pokedex_raids_file)) {
 	$raiddatas	= json_decode(file_get_contents($pokedex_raids_file), true);
