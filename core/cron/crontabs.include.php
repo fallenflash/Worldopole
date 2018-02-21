@@ -61,7 +61,7 @@ if (is_file($pokedex_raids_file)) {
 $timestamp = time();
 $timestamp_lastweek = $timestamp - 604800;
 
-/*// Trim all json stats files to last 7 days of data
+// Trim all json stats files to last 7 days of data
 $gymsdatas = trim_stats_json($gymsdatas, $timestamp_lastweek);
 $stopdatas = trim_stats_json($stopdatas, $timestamp_lastweek);
 $pokedatas = trim_stats_json($pokedatas, $timestamp_lastweek);
@@ -74,7 +74,7 @@ include_once(SYS_PATH.'/core/cron/pokedex_counts.cron.php');
 include_once(SYS_PATH.'/core/cron/pokedex_raids.cron.php');
 if ($config->system->captcha_support) {
 	include_once(SYS_PATH.'/core/cron/captcha.cron.php');
-}*/
+}
 
 // The following files are updated every 24h only because the queries are quite expensive
 // and they don't need a fast update interval
