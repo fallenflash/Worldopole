@@ -17,7 +17,6 @@ $req = '[timeout:600][out:json][date:"2016-07-17T00:00:00Z"][bbox:'.$bounds->min
 
 			way["boundary"="national_park"];
 			way["recreation_ground"];
-			way["leisure"="nature_reserve"];
 			way["leisure"="playground"];
 			way["leisure"="pitch"];
 
@@ -40,7 +39,6 @@ $req = '[timeout:600][out:json][date:"2016-07-17T00:00:00Z"][bbox:'.$bounds->min
 
 			rel["boundary"="national_park"];
 			rel["recreation_ground"];
-			rel["leisure"="nature_reserve"];
 			rel["leisure"="playground"];
 			rel["leisure"="pitch"];
 
