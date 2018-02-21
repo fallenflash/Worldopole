@@ -90,7 +90,7 @@ function initMap() {
 			}
 		});
 
-		var infoWindow = new google.maps.InfoWindow({ pixelOffset: new google.maps.Size(0, 10), disableAutoPan: true });
+		var infoWindow = new google.maps.InfoWindow({ pixelOffset: new google.maps.Size(0, 8), disableAutoPan: true });
 
         // load frequent spawns
         $.getJSON('<?=auto_ver('core/json/nests.stats.json')?>', function(nestData) {
@@ -141,13 +141,15 @@ function initMap() {
                     strokeWeight: 2,
                     fillColor: '#0000FF',
                     fillOpacity: 0.1,
-                    map: map
+                    map: map,
+                    zIndex: 0
                 });
 
 				var marker = new google.maps.Marker({
 					position: getCenter(nestData[i]),
 					map: map,
-					icon: getImage(nestData[i], pokeimg_suffix)
+					icon: getImage(nestData[i], pokeimg_suffix),
+                    zIndex: nestData[i].count
 				});
 
 				google.maps.event.addListener(markerPoly, 'click', (function(marker, i) {
@@ -216,12 +218,19 @@ function getCenter(data) {
 }
 
 function getImage(data, pokeimg_suffix) {
+    size = 32
+    if (data.geo != null) {
+        size = 25 + data.count
+        if (size > 60) {
+            size = 60
+        }
+    }
 	var image = {
 		url: 'core/pokemons/' + data.pid + pokeimg_suffix,
-		scaledSize: new google.maps.Size(32, 32),
+		scaledSize: new google.maps.Size(size, size),
 		origin: new google.maps.Point(0, 0),
-		anchor: new google.maps.Point(16, 16),
-		labelOrigin: new google.maps.Point(16, 36)
+		anchor: new google.maps.Point(size/2, size/2),
+		labelOrigin: new google.maps.Point(size/2, size/2)
 	}
 	return image
 }
