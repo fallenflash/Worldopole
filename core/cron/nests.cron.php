@@ -77,9 +77,9 @@ if ($status == 200) {
 	$parks = array();
 	foreach ( $json["elements"] as $element) {
 		$tempGeo = null;
-		if (isset($element["type"] && $element["type"] == "way" && isset($element["geometry"])) {
+		if (isset($element["type"]) && $element["type"] == "way" && isset($element["geometry"])) {
 			$tempGeo = $element["geometry"];
-		} else if (isset($element["type"] && $element["type"] == "relation" && isset($element["members"]) ) {
+		} else if (isset($element["type"]) && $element["type"] == "relation" && isset($element["members"]) ) {
 			$members = $element["members"];
 			foreach ($members as $member) {
 				if (isset($member["role"]) && $member["role"] == "outer" && isset($member["geometry"])) {
