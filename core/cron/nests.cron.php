@@ -90,7 +90,6 @@ if ($status == 200) {
 		}
 		if (isset($tempGeo)) {
 			$data = array();
-			$tempGeo = $element["geometry"];
 			$geo = array();
 			foreach ($tempGeo as $ele) {
 				$geo[] = array("lat" => $ele["lat"], "lng" => $ele["lon"]);
