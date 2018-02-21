@@ -1,5 +1,5 @@
 <?php
-	
+
 // -----------------------------------------------------------------------------------------------------------
 // Nests datas 
 // 
@@ -10,28 +10,51 @@
 $bounds = $manager->getMapsCoords();
 $req = '[timeout:600][out:json][date:"2016-07-17T00:00:00Z"][bbox:'.$bounds->min_latitude.','.$bounds->min_longitude.','.$bounds->max_latitude.','.$bounds->max_longitude.'];
 		(
-            way["leisure"="park"];
-		    way["landuse"="garden"];
-            way["leisure"="golf_course"];
-            way["boundary"="physiogeographical"];
-            
-            way["boundary"="national_park"];
-		    way["recreation_ground"];
-	        way["leisure"="nature_reserve"];
-            way["leisure"="playground"];
-            way["leisure"="pitch"];
-            
-            way["landuse"="grass"];
+			way["leisure"="park"];
+			way["landuse"="garden"];
+			way["leisure"="golf_course"];
+			way["boundary"="physiogeographical"];
+
+			way["boundary"="national_park"];
+			way["recreation_ground"];
+			way["leisure"="nature_reserve"];
+			way["leisure"="playground"];
+			way["leisure"="pitch"];
+
+			way["landuse"="grass"];
 			way["landuse"="meadow"];
-            way["natural"="heath"];
-            way["natural"="moor"];
-            way["natural"="scrub"];
-            
-            way["landuse"="farmland"];
+			way["natural"="heath"];
+			way["natural"="moor"];
+			way["natural"="scrub"];
+
+			way["landuse"="farmland"];
 			way["landuse"="greenfield"];
-            way["landuse"="recreation_ground"];
-            way["landuse"="farmyard"];
-            way["landuse"="vineyard"];
+			way["landuse"="recreation_ground"];
+			way["landuse"="farmyard"];
+			way["landuse"="vineyard"];
+			
+			rel["leisure"="park"];
+			rel["landuse"="garden"];
+			rel["leisure"="golf_course"];
+			rel["boundary"="physiogeographical"];
+
+			rel["boundary"="national_park"];
+			rel["recreation_ground"];
+			rel["leisure"="nature_reserve"];
+			rel["leisure"="playground"];
+			rel["leisure"="pitch"];
+
+			rel["landuse"="grass"];
+			rel["landuse"="meadow"];
+			rel["natural"="heath"];
+			rel["natural"="moor"];
+			rel["natural"="scrub"];
+
+			rel["landuse"="farmland"];
+			rel["landuse"="greenfield"];
+			rel["landuse"="recreation_ground"];
+			rel["landuse"="farmyard"];
+			rel["landuse"="vineyard"];
 		);
 		out meta geom;
 		>;
@@ -53,22 +76,32 @@ if ($status == 200) {
 
 	$parks = array();
 	foreach ( $json["elements"] as $element) {
-		if ($element["type"] == "way") {
-			if (isset( $element["geometry"] )) {
-				$data = array();
-				$tempGeo = $element["geometry"];
-				$geo = array();
-				foreach ($tempGeo as $ele) {
-					$geo[] = array("lat" => $ele["lat"], "lng" => $ele["lon"]);
+		$tempGeo = null;
+		if ($element["type"] == "way" && isset($element["geometry"])) {
+			$tempGeo = $element["geometry"];
+		} else if ($element["type"] == "relation" && isset($element["members"]) ) {
+			$members = $element["members"];
+			foreach ($members as $member) {
+				if (isset($members["role"]) && $members["role"] == "outer") {
+					$tempGeo = $member["geometry"];
+					break;
 				}
-				$data["geo"] = $geo;
-				if (isset($element["tags"]) && isset($element["tags"]["name"])) {
-					$data["name"] = $element["tags"]["name"];
-				} else {
-					$data["name"] = null;
-				}
-				$parks[] = $data;
 			}
+		}
+		if (isset($tempGeo)) {
+			$data = array();
+			$tempGeo = $element["geometry"];
+			$geo = array();
+			foreach ($tempGeo as $ele) {
+				$geo[] = array("lat" => $ele["lat"], "lng" => $ele["lon"]);
+			}
+			$data["geo"] = $geo;
+			if (isset($element["tags"]) && isset($element["tags"]["name"])) {
+				$data["name"] = $element["tags"]["name"];
+			} else {
+				$data["name"] = null;
+			}
+			$parks[] = $data;
 		}
 	}
 
@@ -135,4 +168,3 @@ if ($status == 200) {
 } else {
 	echo "Error ".$status." while getting nests from overpass-turbo. Aborting Nest Update.";
 }
-
