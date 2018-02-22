@@ -90,6 +90,12 @@ do {
 } while ($migration < new DateTime());
 $migration = $migrationPrev->getTimestamp();
 
+if ( filemtime($nests_parks_file) - $migration <= 0 ) {
+	file_put_contents($nests_file, json_encode(array()));
+	file_put_contents($nests_parks_file, json_encode(array()));
+	touch($nests_parks_file, 1);
+}
+
 // Do not update both files at the same time to lower cpu load
 if (file_update_ago($pokedex_rarity_file) > 86400) {
 	// set file mtime to now before executing long running queries
@@ -97,9 +103,6 @@ if (file_update_ago($pokedex_rarity_file) > 86400) {
 	touch($pokedex_rarity_file);
 	// update pokedex rarity
 	include_once(SYS_PATH.'/core/cron/pokedex_rarity.cron.php');
-} elseif ( filemtime($nests_parks_file) - $migration <= 0 && filemtime($nests_parks_file) - $migration >= -43200) {
-	file_put_contents($nests_file, json_encode(array()));
-	file_put_contents($nests_parks_file, json_encode(array()));
 } elseif ( (file_update_ago($nests_parks_file) >= 43200) && (time() - $migration  >= 43200) && (time() - $migration  <= 46800) ) { # extra update 12h after migration
 	// set file mtime to now before executing long running queries
 	// so we don't try to update the file twice
