@@ -78,7 +78,6 @@ if ($config->system->captcha_support) {
 
 // The following files are updated every 24h only because the queries are quite expensive
 // and they don't need a fast update interval
-$update_delay = 86400;
 $pokedex_rarity_file = SYS_PATH.'/core/json/pokedex.rarity.json';
 $nests_file = SYS_PATH.'/core/json/nests.stats.json';
 $nests_parks_file = SYS_PATH.'/core/json/nests.parks.json';
@@ -92,27 +91,27 @@ do {
 $migration = $migrationPrev->getTimestamp();
 
 // Do not update both files at the same time to lower cpu load
-if (file_update_ago($pokedex_rarity_file) > $update_delay) {
+if (file_update_ago($pokedex_rarity_file) > 86400) {
 	// set file mtime to now before executing long running queries
 	// so we don't try to update the file twice
 	touch($pokedex_rarity_file);
 	// update pokedex rarity
 	include_once(SYS_PATH.'/core/cron/pokedex_rarity.cron.php');
-} elseif ( filemtime($nests_parks_file) - $migration < 0 && filemtime($nests_parks_file) - $migration > -$update_delay) {
+} elseif ( filemtime($nests_parks_file) - $migration <= 0 && filemtime($nests_parks_file) - $migration >= -43200) {
 	file_put_contents($nests_file, json_encode(array()));
 	file_put_contents($nests_parks_file, json_encode(array()));
-} elseif (file_update_ago($nests_parks_file) > $update_delay) {
-	// set file mtime to now before executing long running queries
-	// so we don't try to update the file twice
-	touch($nests_parks_file);
-	// update nests
-	$nestTime = 24;
-	include_once(SYS_PATH.'/core/cron/nests.cron.php');
-} elseif ( (file_update_ago($nests_parks_file) > $update_delay/2) && (time() - $migration  > 43200) && (time() - $migration  < 46800) ) { # extra update 12h after migration
+} elseif ( (file_update_ago($nests_parks_file) >= 43200) && (time() - $migration  >= 43200) && (time() - $migration  <= 46800) ) { # extra update 12h after migration
 	// set file mtime to now before executing long running queries
 	// so we don't try to update the file twice
 	touch($nests_parks_file);
 	// update nests
 	$nestTime = 12;
+	include_once(SYS_PATH . '/core/cron/nests.cron.php');
+} elseif ( (file_update_ago($nests_parks_file) >= 86400) && (time() - $migration  >= 86400) ) {
+	// set file mtime to now before executing long running queries
+	// so we don't try to update the file twice
+	touch($nests_parks_file);
+	// update nests
+	$nestTime = 24;
 	include_once(SYS_PATH . '/core/cron/nests.cron.php');
 }
