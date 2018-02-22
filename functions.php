@@ -90,9 +90,13 @@ function percent($val, $val_total)
 
 function auto_ver($url)
 {
-	$path = pathinfo($url);
-	$ver = '.'.filemtime(SYS_PATH.'/'.$url).'.';
-	echo $path['dirname'].'/'.preg_replace('/\.(css|js|json)$/', $ver."$1", $path['basename']);
+	if (is_file(SYS_PATH.'/'.$url)) {
+		$path = pathinfo($url);
+		$ver = '.'.filemtime(SYS_PATH.'/'.$url).'.';
+		echo $path['dirname'].'/'.preg_replace('/\.(css|js|json)$/', $ver."$1", $path['basename']);
+	} else {
+		echo $url;
+	}
 }
 
 
