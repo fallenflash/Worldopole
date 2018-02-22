@@ -73,7 +73,7 @@ if ($status == 200) {
 	$json =  json_decode($response, true);
 
 	$parks = array();
-	foreach ( $json["elements"] as $element) {
+	foreach ( $json["elements"] as $key => &$element) {
 		$tempGeo = null;
 		if (isset($element["type"]) && $element["type"] == "way" && isset($element["geometry"])) {
 			$tempGeo = $element["geometry"];
@@ -100,13 +100,13 @@ if ($status == 200) {
 			}
 			$parks[] = $data;
 		}
+		unset($json[$key]);
 	}
-
 
 	// Get frequent spawn points
 	$datas = $manager->getNestData($nestTime);
 	$nestsdatas = array();
-	foreach ($datas as $data) {
+	foreach ($datas as $key => &$data) {
 		$nests['pid'] = $data->pokemon_id;
 		$nests['c'] = $data->total_pokemon;
 		$nests['lat'] = $data->latitude;
@@ -118,12 +118,12 @@ if ($status == 200) {
 
 		// Add the data to array
 		$nestsdatas[] = $nests;
+		unset($datas[$key]);
 	}
-
 
 	// Checking Parks for Spawnpoints. This will take a while
 	$nestParks = array();
-	foreach ($parks as $park) {
+	foreach ($parks as $key => &$park) {
 		$spawns = array();
 
 		foreach ($nestsdatas as $spawnpoint) {
@@ -153,7 +153,7 @@ if ($status == 200) {
 			$park["count"] = $mostPidCount;
 			$nestParks[] = $park;
 		}
-
+		unset($parks[$key]);
 	}
 
 
