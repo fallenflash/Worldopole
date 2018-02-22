@@ -164,4 +164,5 @@ if ($status == 200) {
 	file_put_contents($nests_parks_file, json_encode($nestParks));
 } else {
 	echo "Error ".$status." while getting nests from overpass-turbo. Aborting Nest Update.";
+	touch($nests_parks_file, $prevNestTime);
 }
