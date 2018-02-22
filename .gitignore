@@ -28,12 +28,12 @@ config.php
 /core/json/captcha.stats.json
 /core/json/nests.stats.json
 /core/json/nests.parks.json
-analyticstracking.php
-core/css/style.css
-core/json/locales/en/translations.json
+/analyticstracking.php
+/core/css/style.css
+/core/json/locales/en/translations.json
 /crontab.bat
 /crontab.vbs
-core/pokemons/
+/core/pokemons/
 
 core/gifs/
 pages/whgmap.page.php
@@ -47,5 +47,12 @@ beta/
 beta2/
 images/
 gifs/
+crontab.bat
+crontab.vbs
+/core/json/pokedex.counts.json
 
 nests\.bat
+
+\.taccess
+
+\.vscode/

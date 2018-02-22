@@ -794,3 +794,100 @@ raids styles
 	}
 	
 }
+
+/* Contest Page */
+
+#contest-content{
+	text-align: center;
+}
+
+#rules.left, #contestpic.right{
+	display: inline-block;
+	vertical-align: top;
+	max-width: 100%;
+	text-align: left;
+}
+
+#rules.left{
+	width: 600px;
+	margin-right: 100px;
+	font-size: 1.2em;
+}
+
+#contestpic.right{
+	width: 350px;
+}
+
+#contest-content img{
+	max-width: 100%;
+	height: auto !important;
+}
+
+.section{
+	width: 1170px;
+	margin: 0 auto;
+	max-width: 93%;
+}
+
+#contest-content .mobile{
+	display: none;
+	text-align: center;
+	margin-top: 30px;
+}
+
+@media (max-width: 1200px) {
+	
+	#rules.left{
+		margin-right: 70px;
+		width: 470px;
+	}
+	
+	#contest-content h1{
+		font-size: 32px;
+	}
+	
+	#contest-content h3{
+		font-size: 21px;
+	}
+	
+}
+
+@media (max-width: 1023px) {
+	
+	#rules.left{
+		font-size: 1em;
+		width: 650px;
+		display: block;
+		margin: 0 auto 40px;
+	}
+	
+	#contestpic.right{
+		display: none;
+	}
+	
+	#contest-content .mobile{
+		display: block;
+	}
+	
+	#contest-content #formsubmit{
+		width: 375px;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+	
+}
+
+@media (max-width: 567px) {
+	
+	#contest-content h1{
+		font-size: 25px;
+	}
+	
+	#contest-content h3{
+		font-size: 18px;
+	}
+	
+}
+
+
+/* End Contest Page */
