@@ -27,6 +27,7 @@ config.php
 /core/json/pokedex.raids.json
 /core/json/captcha.stats.json
 /core/json/nests.stats.json
+/core/json/nests.parks.json
 analyticstracking.php
 core/css/style.css
 core/json/locales/en/translations.json
