@@ -108,7 +108,7 @@ if (file_update_ago($pokedex_rarity_file) > $update_delay) {
 	// update nests
 	$nestTime = 24;
 	include_once(SYS_PATH.'/core/cron/nests.cron.php');
-} elseif ( (filemtime($nests_parks_file) - $migration  > 43200) && (filemtime($nests_parks_file) - $migration  < 46800) ) { # extra update 12h after migration
+} elseif ( (file_update_ago($nests_parks_file) > $update_delay/2) && (time() - $migration  > 43200) && (time() - $migration  < 46800) ) { # extra update 12h after migration
 	// set file mtime to now before executing long running queries
 	// so we don't try to update the file twice
 	touch($nests_parks_file);
