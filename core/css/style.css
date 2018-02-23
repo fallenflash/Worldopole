@@ -4,14 +4,13 @@ General styles
 ****************/
 
 body{
-	background-color: #2C2F34;
 	font-family: 'Lato', sans-serif;
-	color: #99AAB5;
+	color: #000;
 	padding-top: 8em;
 }
 
 .area{
-	border-bottom: 1px solid #261038;
+	border-bottom: 1px solid #f5f5f5;
 	padding-bottom: 3em;
 	margin-bottom: 3em;
 }
@@ -39,8 +38,8 @@ a {
 		border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
 	}
-	.form-group:last-child 
-	.form-control {				
+	.form-group:last-child
+	.form-control {
 		border-bottom-right-radius: 3px;
 		border-bottom-left-radius: 3px;
 		top: -2px;
@@ -63,8 +62,8 @@ h2 {
 }
 
 .btn-primary {
-	background-color:#261038;
-	border-color:#261038;
+	background-color:#174391;
+	border-color:#174391;
 }
 
 /****************
@@ -72,7 +71,7 @@ Navigation
 ****************/
 
 .navbar-default{
-	background-color: #282828;
+	background-color: #fff;
 }
 
 #logo-img {
@@ -81,11 +80,11 @@ Navigation
 }
 
 .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
-	color:#6a0193;
+	color:#174391;
 }
 
 .navbar-default .navbar-brand {
-	color:#6a0193;
+	color:#174391;
 }
 
 /****************
@@ -129,7 +128,7 @@ Pokedex display
 .flex-item {
 	-webkit-flex: 1 auto;
 	flex: 1 0 100px;
-	border-bottom: 1px solid #99AAB5;
+	border-bottom: 1px solid #f5f5f5;
 	padding-bottom: 5px;
 	margin-bottom: 5px;
 	text-align: center;
@@ -149,7 +148,7 @@ Pokedex display
 img.unseen{
 	-webkit-filter: grayscale(1);
 	filter: grayscale(1);
-	opacity:0.2;
+	opacity:0.5;
 }
 
 .pokemon-single a:hover img	 {
@@ -189,7 +188,7 @@ Pokémon single pages
 }
 
 .nav-links a {
-	color:#99AAB5;
+	color:#777;
 	transition:color .25s ease-in;
 }
 
@@ -203,7 +202,7 @@ Pokémon single pages
 }
 
 .nav-links a:hover {
-	color:#261038;
+	color:#174391;
 }
 
 .stats-data {
@@ -277,13 +276,13 @@ Also private joke ;)
 }
 
 .big-data a {
-	color:#99AAB5;
+	color:#777;
 	transition:color .25s ease-in;
 }
 
 .big-data a:hover {
 	text-decoration:none;
-	color:#261038;
+	color:#174391;
 }
 
 .big-data a:focus {
@@ -319,27 +318,15 @@ Website footer
 ****************/
 
 footer {
-	background-color:#261038;
-	margin-top:3em;
-	padding-bottom: 3em;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-	line-height: 1.2;
->>>>>>> Stashed changes
-=======
-	line-height: 1.2;
->>>>>>> Stashed changes
-=======
-	line-height: 1.2;
->>>>>>> Stashed changes
-	color:darkgrey;
+	background-color:#174391;
+	margin-top:4em;
+	padding-bottom: 4em;
+	color:white;
 }
 
 footer a {
-	color:#FFFFFF;
-	border-bottom:1px grey solid;
+	color:white;
+	border-bottom:1px white solid;
 	text-decoration: none;
 }
 
@@ -350,7 +337,7 @@ footer .big-icon {
 }
 
 footer a svg {
-	border-bottom:0px #99AAB5 solid;
+	border-bottom:0px white solid;
 	text-decoration: none;
 }
 
@@ -392,7 +379,7 @@ div#gymInfos{
 	border-radius: 5px;
 	border: 2px solid grey;
 	z-index:9000;
-	background-color: #2C2F34;
+	background-color: #ffffff;
 }
 
 div#circleImage:before {
@@ -424,7 +411,6 @@ div#circleImage {
 div#gymName{
 	position: absolute;
 	left:120px;
-	color:#f1f1f1;
 	top: 10px;
 	width: 225px;
 	font-size: large;
@@ -453,7 +439,7 @@ div#levelMeter .progress{
 	top: 2px;
 }
 .label-line {
-	background: #262626;
+	background: #000;
 	height:20px;
 	width:1px;
 	top: -2px;
@@ -475,7 +461,14 @@ div#levelMeter .progress{
 div#gymPrestige{
 	position: absolute;
 	left:120px;
+	left: 120px;
 	top: 70px;
+	font-size: 14px;
+}
+
+div#gymHistory{
+	position: absolute;
+	left: 220px;top: 70px;
 	font-size: 14px;
 	
 }
@@ -509,7 +502,7 @@ trainers search styles
 	height: 40px;
 }
 
-#searchTrainer input {
+#searchTrainer input, #searchGyms input {
 	height: 40px;
 }
 
@@ -554,15 +547,15 @@ raids styles
 }
 
 #raidsContainer .current, #raidsContainer .upcoming {
-	color: #99AAB5;
+	color: #fff;
 	border-radius: 1em;
 	padding: 1px 6px 2px 6px;
 }
 #raidsContainer .current {
-	background-color: #7d56a5;
+	background-color: #fe6d3c;
 }
 #raidsContainer .upcoming {
-	background-color: #7d56a5;
+	background-color: #f98796;
 }
 
 #raidsContainer .pokemon-details {
@@ -570,7 +563,7 @@ raids styles
 }
 
 #raidsContainer td.level {
-    color: #99AAB5;
+    color: #fff;
     text-shadow: 0 0 6px black;
 }
 

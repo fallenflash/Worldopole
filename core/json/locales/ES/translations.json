@@ -84,10 +84,7 @@
 "POKEMON_CANDIES": "Caramelos",
 "POKEMON_COMPGAME": "comparado con <strong>el más alto</strong> del juego",
 "POKEMON_CP": "PC máximo",
-<<<<<<< HEAD
-=======
 "POKEMON_EVOLUTION": "Requisitos para la próxima evolución",
->>>>>>> 2d57d45e62244a2457f6b8834255027ccfdeed9c
 "POKEMON_FAMILY": "Familia",
 "POKEMON_FAMILYTITLE": " : familia",
 "POKEMON_FINAL": "Forma final",
@@ -170,11 +167,11 @@
 "YEARS": "años",
 "ITEM_DRAGON_SCALE": "Escama Dragón",
 "ITEM_KINGS_ROCK": "Roca del Rey",
-"ITEM_SUN_STONE": "Pedra Solar",
+"ITEM_SUN_STONE": "Piedra Solar",
 "ITEM_METAL_COAT": "Revestimiento Metálico",
 "ITEM_UPGRADE": "Ampliación",
 "ITEM_LEAF_STONE": "Roca Afilada",
-"ITEM_MOON_STONE": "Piedra Solar",
+"ITEM_MOON_STONE": "Piedra Lunar",
 "INFO_ATTACK": "Ataque",
 "INFO_DEFENSE": "Defensa",
 "INFO_STAMINA": "Salud"
