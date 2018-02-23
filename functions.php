@@ -90,9 +90,13 @@ function percent($val, $val_total)
 
 function auto_ver($url)
 {
-	$path = pathinfo($url);
-	$ver = '.'.filemtime(SYS_PATH.'/'.$url).'.';
-	echo $path['dirname'].'/'.preg_replace('/\.(css|js)$/', $ver."$1", $path['basename']);
+	if (is_file(SYS_PATH.'/'.$url)) {
+		$path = pathinfo($url);
+		$ver = '.'.filemtime(SYS_PATH.'/'.$url).'.';
+		echo $path['dirname'].'/'.preg_replace('/\.(css|js|json)$/', $ver."$1", $path['basename']);
+	} else {
+		echo $url;
+	}
 }
 
 
@@ -226,7 +230,7 @@ function tree_check_array($array_check, $array_add, $correct_arrow) {
 				} else {
 					$res->array_sufix = "";
 				}
-			} else if (is_null($res->array_sufix)) {
+			} else if (!isset($res->array_sufix)) {
 				$res->array_sufix = "";
 			}
 			$array_add[] = $res;
@@ -251,4 +255,83 @@ function tree_remove_bellow($tree, $max_pokemon)
 		}
 	}
 	return $arr;
+}
+
+########################################################################
+// generation
+########################################################################
+function generation($id)
+{
+	switch ($id) {
+		case ($id >= 1 && $id <= 151):
+			return [1, "Kanto"];
+		case ($id >= 152 && $id <= 251):
+			return [2, "Johto"];
+		case ($id >= 252 && $id <= 386):
+			return [3, "Hoenn"];
+		case ($id >= 387 && $id <= 493):
+			return [4, "Sinnoh"];
+		case ($id >= 494 && $id <= 649):
+			return [5, "Teselia"];
+		case ($id >= 650 && $id <= 721):
+			return [6, "Kalos"];
+		case ($id >= 722 && $id <= 802):
+			return [7, "Alola"];
+	}
+}
+
+########################################################################
+// check if point is inside porygon
+########################################################################
+function pointIsInsidePolygon($lat, $lng, $geos) {
+	
+	$intersections = 0;
+	$geos_count = count($geos);
+
+	for ($i=1; $i < $geos_count; $i++) {
+		$geo1 = $geos[$i-1];
+		$geo2 = $geos[$i];
+		if ($geo1['lng'] == $geo2['lng'] and $geo1['lng'] == $lng and $lat > min($geo1['lat'], $geo2['lat']) and $lat < max($geo1['lat'], $geo2['lat'])) { // Check if point is on an horizontal polygon boundary
+			return "boundary";
+		}
+		if ($lng > min($geo1['lng'], $geo2['lng']) and $lng <= max($geo1['lng'], $geo2['lng']) and $lat <= max($geo1['lat'], $geo2['lat']) and $geo1['lng'] != $geo2['lng']) {
+			$xinters = ($lng - $geo1['lng']) * ($geo2['lat'] - $geo1['lat']) / ($geo2['lng'] - $geo1['lng']) + $geo1['lat'];
+			if ($xinters == $lat) { // Check if point is on the polygon boundary (other than horizontal)
+				return "boundary";
+			}
+			if ($geo1['lat'] == $geo2['lat'] || $lat <= $xinters) {
+				$intersections++;
+			}
+		}
+	}
+	// If the number of edges we passed through is odd, then it's in the polygon. 
+	if ($intersections % 2 != 0) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+########################################################################
+// compine outer ways into porygon
+########################################################################
+function combineOuter($outers) {
+	$polygon = array();
+	foreach ($outers as $key => $outer) {
+		if ($key == 0) {
+			$polygon = $outer;
+		} else {
+			$firstEle = $outer[0];
+			$lastEle = $outer[count($outer) - 1];
+			$lastElePoly = $polygon[count($polygon) - 1];
+			if ($firstEle == $lastElePoly) {
+				$polygon = array_merge($polygon, $outer);
+				break;
+			} else if ($lastEle == $lastElePoly) {
+				$polygon = array_merge($polygon, array_reverse($outer));
+				break;
+			}
+		}
+	}
+	return $polygon;
 }

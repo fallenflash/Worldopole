@@ -128,6 +128,7 @@ function initMap() {
 }
 
 function setGymDetails(gym) {
+<<<<<<< HEAD
     // replace http with https to fix mixed content
     var imgurl = gym.gymDetails.gymInfos.url;
     imgurl = imgurl.replace(/^http:\/\//i, 'https://');
@@ -149,4 +150,26 @@ function setGymDetails(gym) {
     $('#gym_details_template #gymName').html('<a href="gymhistory?name=' + divcontent + '">' + divcontent + '</a>');
     $('#gym_details_template #gymInfos').css('border-color', currentTeamColor);
     $('#gym_details_template').show();
+=======
+	// replace http with https to fix mixed content
+	var imgurl = gym.gymDetails.gymInfos.url;
+	imgurl = imgurl.replace(/^http:\/\//i, 'https://');
+	$('#gym_details_template #circleImage').css('background', 'url(' + imgurl + ') no-repeat center');
+	$('#gym_details_template #gymName').html(gym.gymDetails.gymInfos.name);
+	$('#gym_details_template #gymHistory a').attr('href', 'gymhistory?name=' + encodeURIComponent(gym.gymDetails.gymInfos.name));
+	$('#gym_details_template #gymDescription').html(gym.gymDetails.gymInfos.description);
+	$('#gym_details_template #gymDefenders').html(gym.infoWindow);
+	$('#gym_details_template #gymPrestigeDisplay').html(gym.gymDetails.gymInfos.points);
+	$('#gym_details_template #gymLastScannedDisplay').html(gym.gymDetails.gymInfos.last_scanned);
+	var currentTeamColor = 'white';
+	if (gym.gymDetails.gymInfos.team == '1') {
+		currentTeamColor = 'rgb(0, 170, 255)';
+	} else if (gym.gymDetails.gymInfos.team == '2') {
+		currentTeamColor = 'rgb(255, 118, 118)';
+	} else if (gym.gymDetails.gymInfos.team == '3') {
+		currentTeamColor = 'rgb(255, 190, 8)';
+	}
+	$('#gym_details_template #gymInfos').css('border-color', currentTeamColor);
+	$('#gym_details_template').show();
+>>>>>>> nests
 }
