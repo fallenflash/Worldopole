@@ -96,5 +96,6 @@ abstract class QueryManager {
 	abstract public function getPokemonSinceLastUpdate($pokemon_id, $last_update);
 	abstract public function getRaidsSinceLastUpdate($pokemon_id, $last_update);
 	abstract public function getCaptchaCount();
-	abstract public function getNestData($time);
+	abstract public function getNestData($time, $minLatitude, $maxLatitude, $minLongitude, $maxLongitude);
+	abstract public function getSpawnpointCount($minLatitude, $maxLatitude, $minLongitude, $maxLongitude);
 }
