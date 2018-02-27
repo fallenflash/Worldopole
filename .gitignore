@@ -28,12 +28,7 @@ config.php
 /core/json/captcha.stats.json
 /core/json/nests.stats.json
 /core/json/nests.parks.json
-/analyticstracking.php
-/core/css/style.css
-/core/json/locales/en/translations.json
-/crontab.bat
-/crontab.vbs
-/core/pokemons/
+analyticstracking.php
 
 core/gifs/
 pages/whgmap.page.php

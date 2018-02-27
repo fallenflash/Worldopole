@@ -103,13 +103,12 @@ if (file_update_ago($pokedex_rarity_file) > 86400) {
 	touch($pokedex_rarity_file);
 	// update pokedex rarity
 	include_once(SYS_PATH.'/core/cron/pokedex_rarity.cron.php');
-} elseif ( (file_update_ago($nests_parks_file) >= 43200) && (time() - $migration  >= 43200) && (time() - $migration  <= 46800) ) { # extra update 12h after migration
+} elseif ( (file_update_ago($nests_parks_file) >= 43200) && (time() - $migration  >= 43200) && (time() - $migration  < 86400) ) { # extra update 12h after migration
 	if (is_file($nests_parks_file)) {
 		$prevNestTime = filemtime($nests_parks_file);
 	} else {
 		$prevNestTime = 1;
 	}
-
 	
 	// set file mtime to now before executing long running queries
 	// so we don't try to update the file twice
