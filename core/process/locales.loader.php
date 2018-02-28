@@ -1,8 +1,8 @@
 <?php
 
 /**
- * The next 3 functions come from the HTTP2 pear package 
- * Copyright (c) 2002-2005, 
+ * The next 3 functions come from the HTTP2 pear package
+ * Copyright (c) 2002-2005,
  * Stig Bakken <ssb@fast.no>,
  * Sterling Hughes <sterling@php.net>,
  * Tomas V.V.Cox <cox@idecnet.com>,
@@ -159,7 +159,7 @@ $pokemon_trans = json_decode(json_encode($pokemon_trans_array), false);
 unset($pokemon_trans_array);
 
 
-// Merge the pokedex, pokemon translation and rarity file into a new array 
+// Merge the pokedex, pokemon translation and rarity file into a new array
 ##########################################################################
 
 $pokedex_file = file_get_contents(SYS_PATH.'/core/json/pokedex.json');
@@ -211,24 +211,26 @@ for ($pokeid = 1; $pokeid <= $maxpid; $pokeid++) {
 	}
 
 	// Add raid data to array
-	$count_data = $pokemon_counts->$pokeid;
-	if (isset($count_data->disappear_time)) {
-		$pokemon->last_seen = strtotime($count_data->disappear_time);
-		$pokemon->last_position = new stdClass();
-		$pokemon->last_position->latitude = $count_data->latitude;
-		$pokemon->last_position->longitude = $count_data->longitude;
+	if ($count_data = $pokemon_counts->$pokeid) {
+		if (isset($count_data->disappear_time)) {
+			$pokemon->last_seen = strtotime($count_data->disappear_time);
+			$pokemon->last_position = new stdClass();
+			$pokemon->last_position->latitude = $count_data->latitude;
+			$pokemon->last_position->longitude = $count_data->longitude;
+		}
 		$pokemon->spawn_count = $count_data->count;
 	} else {
-		$pokemon->spawn_count = $count_data->count;
+		$pokemon->spawn_count = 0;
 	}
 
 	// Add raid data to array
-	$raid_data = $raid_counts->$pokeid;
-	if (isset($raid_data->end_time)) {
-		$pokemon->last_raid_seen = strtotime($raid_data->end_time);
-		$pokemon->last_raid_position = new stdClass();
-		$pokemon->last_raid_position->latitude = $raid_data->latitude;
-		$pokemon->last_raid_position->longitude = $raid_data->longitude;
+	if ($raid_data = $raid_counts->$pokeid) {
+		if (isset($raid_data->end_time)) {
+			$pokemon->last_raid_seen = strtotime($raid_data->end_time);
+			$pokemon->last_raid_position = new stdClass();
+			$pokemon->last_raid_position->latitude = $raid_data->latitude;
+			$pokemon->last_raid_position->longitude = $raid_data->longitude;
+		}
 		$pokemon->raid_count = $raid_data->count;
 	} else {
 		$pokemon->raid_count = 0;
