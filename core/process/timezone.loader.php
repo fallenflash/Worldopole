@@ -13,4 +13,6 @@ if (!isset($config)) {
 date_default_timezone_set($config->system->timezone);
 
 // Get time offset to UTC in '+00:00' format
-$time_offset = date('P');
+//$time_offset = date('P');
+// :FIXME: Don't make this static
+$time_offset = '+00:00';
