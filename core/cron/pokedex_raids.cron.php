@@ -28,14 +28,22 @@ for ($pid = 1; $pid <= $maxpid; $pid++) {
 	}
 
 	$where = "WHERE pokemon_id = '".$pid."' && UNIX_TIMESTAMP(start) > '".$last_update."'";
-	$req = "SELECT raid_battle_timestamp as start_timestamp, from_unixtime(raid_end_timestamp), (CONVERT_TZ(end, '+00:00', '".$time_offset."')) AS end_time_real, at AS latitude, lon AS longitude, count
-                FROM gym
-                ORDER BY raid_battle_timestamp DESC
+	// :FIXME: Get the right count
+	$req = "SELECT UNIX_TIMESTAMP(start) as start_timestamp, end, (CONVERT_TZ(end, '+00:00', '".$time_offset."')) AS end_time_real, latitude, longitude, count
+                FROM raid r
+                JOIN gym g
+                JOIN (SELECT count(*) as count
+                    FROM raid
+                    " . $where."
+                ) x
+                ON r.gym_id = g.gym_id
+                " . $where."
+                ORDER BY start DESC
                 LIMIT 0,1";
 	$result = $mysqli->query($req);
 	$data = $result->fetch_object();
 
-	if (isset($data)) {
+	if (isset($data->count)) {
 		$count = $data->count;
 	} else {
 		$count = 0;
