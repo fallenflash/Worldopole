@@ -875,8 +875,8 @@ switch ($request) {
 			$end = date("Y-m-d H:i", (int) $_GET['end']);
 			$pokemon_id = mysqli_real_escape_string($mysqli, $_GET['pokemon_id']);
 			$where = " WHERE pokemon_id = ".$pokemon_id." "
-					. "AND disappear_time BETWEEN '".$start."' AND '".$end."'";
-			$req 		= "SELECT lat AS latitude, lon AS longitude FROM pokemon".$where." ORDER BY disappear_time DESC LIMIT 10000";
+					. "AND from_unixtime(expire_timestamp) BETWEEN '".$start."' AND '".$end."'";
+			$req 		= "SELECT lat AS latitude, lon AS longitude FROM pokemon".$where." ORDER BY expire_timestamp DESC LIMIT 10000";
 			$result = $mysqli->query($req);
 			$points = array();
 			while ($result && $data = $result->fetch_object()) {
@@ -885,9 +885,9 @@ switch ($request) {
 
 			$json = json_encode($points);
 		}
-
 		header('Content-Type: application/json');
 		echo $json;
+
 		break;
 
 
@@ -908,8 +908,8 @@ switch ($request) {
 		if (isset($_GET['pokemon_id'])) {
 			$pokemon_id = mysqli_real_escape_string($mysqli, $_GET['pokemon_id']);
 			$req = "SELECT COUNT(*) AS total,
-					HOUR(CONVERT_TZ(from_unixtime(expire_timestamp) AS disappear_time, '+00:00', '".$time_offset."')) AS disappear_hour
-					FROM (SELECT from_unixtime(expire_timestamp) AS disappear_time FROM pokemon WHERE pokemon_id = '".$pokemon_id."' ORDER BY disappear_time LIMIT 10000) AS pokemonFiltered
+					HOUR(CONVERT_TZ(from_unixtime(expire_timestamp), '+00:00', '".$time_offset."')) AS disappear_hour
+					FROM (SELECT expire_timestamp FROM pokemon WHERE pokemon_id = '".$pokemon_id."' ORDER BY expire_timestamp LIMIT 10000) AS pokemonFiltered
 					GROUP BY disappear_hour
 					ORDER BY disappear_hour";
 			$result = $mysqli->query($req);
@@ -959,14 +959,14 @@ if ($postRequest != "") {
 				}
 				if ($testIv->iv != null && isset($_POST['ivMin']) && ($_POST['ivMin'] != "")) {
 					$ivMin = mysqli_real_escape_string($mysqli, $_POST['ivMin']);
-					$where .= " AND ((100/45)*(individual_attack+individual_defense+individual_stamina)) >= (".$ivMin.") ";
+					$where .= " AND ((100/45)*(atk_iv+def_iv+sta_iv)) >= (".$ivMin.") ";
 				}
 				if ($testIv->iv != null && isset($_POST['ivMax']) && ($_POST['ivMax'] != "")) {
 					$ivMax = mysqli_real_escape_string($mysqli, $_POST['ivMax']);
-					$where .= " AND ((100/45)*(individual_attack+individual_defense+individual_stamina)) <=(".$ivMax.") ";
+					$where .= " AND ((100/45)*(atk_iv+def_iv+sta_iv)) <=(".$ivMax.") ";
 				}
 				$req = "SELECT pokemon_id, id AS encounter_id, lat AS latitude, lon AS longitude, from_unixtime(expire_timestamp) AS disappear_time,
-						(CONVERT_TZ(from_unixtime(expire_timestamp) AS disappear_time, '+00:00', '".$time_offset."')) AS disappear_time_real,
+						(CONVERT_TZ(from_unixtime(expire_timestamp), '+00:00', '".$time_offset."')) AS disappear_time_real,
 						atk_iv AS individual_attack, def_iv AS individual_defense, sta_iv AS individual_stamina, move_1, move_2
 						FROM pokemon ".$where."
 						ORDER BY disappear_time DESC
