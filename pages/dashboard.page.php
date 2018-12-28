@@ -62,7 +62,8 @@
 			</div>
 		
 		</div>
-		
+
+<!--
 		<div class="row area">
 			
 			<div class="col-md-12">
@@ -78,7 +79,7 @@
 					<canvas id="team_av"></canvas>
 				</div>
 			</div>
-		
+-->
 			
 			<div class="col-md-12">
 				<h4><?= $locales->DASHBOARD_GYM_OWNED_PERFORMANCE ?> <small><?= $locales->DASHBOARD_LAST7DAYS ?></small></h4>

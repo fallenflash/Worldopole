@@ -4,7 +4,7 @@
 // use last disappear_time as a starting point to overcome scan downtimes
 $req = "SELECT pokemon_id, COUNT(*) AS spawns_last_day
 		FROM pokemon
-		WHERE disappear_time >= (SELECT MAX(disappear_time) FROM pokemon) - INTERVAL 1 DAY
+		WHERE from_unixtime(expire_timestamp) >= (SELECT MAX(from_unixtime(expire_timestamp)) FROM pokemon) - INTERVAL 1 DAY
 		GROUP BY pokemon_id
 		ORDER BY pokemon_id ASC";
 $result = $mysqli->query($req);
