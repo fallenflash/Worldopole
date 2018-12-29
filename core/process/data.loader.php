@@ -122,8 +122,8 @@ if (!empty($page)) {
 			// Some math
 			// ----------
 
-			$pokemon->max_cp_percent = percent(4548, $pokemon->max_cp); //Slaking #289
-			$pokemon->max_hp_percent = percent(415, $pokemon->max_hp); //Blissey #242
+			$pokemon->max_cp_percent = percent(4431, $pokemon->max_cp); //Slaking #289
+			$pokemon->max_hp_percent = percent(403, $pokemon->max_hp); //Blissey #242
 
 
 			// Set tree
