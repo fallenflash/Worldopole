@@ -670,7 +670,7 @@ switch ($request) {
 
 		$limit = " LIMIT ".($page * 10).",10";
 
-		$req = "SELECT id AS gym_id, raid_level AS level, raid_pokemon_id, raid_pokemon_cp AS cp, raid_pokemon_move_1 AS move_1, raid_pokemon_move_2 AS move_2, CONVERT_TZ(from_unixtime(raid_spawn_timestamp), '+00:00', '".$time_offset."') AS spawn, CONVERT_TZ(from_unixtime(raid_battle_timestamp), '+00:00', '".$time_offset."') AS start, CONVERT_TZ(from_unixtime(raid_end_timestamp), '+00:00', '".$time_offset."') AS end, CONVERT_TZ(from_unixtime(updated), '+00:00', '".$time_offset."') AS last_scanned, name, lat AS latitude, lon AS longitude FROM gym
+		$req = "SELECT id AS gym_id, raid_level AS level, raid_pokemon_id AS pokemon_id, raid_pokemon_cp AS cp, raid_pokemon_move_1 AS move_1, raid_pokemon_move_2 AS move_2, CONVERT_TZ(from_unixtime(raid_spawn_timestamp), '+00:00', '".$time_offset."') AS spawn, CONVERT_TZ(from_unixtime(raid_battle_timestamp), '+00:00', '".$time_offset."') AS start, CONVERT_TZ(from_unixtime(raid_end_timestamp), '+00:00', '".$time_offset."') AS end, CONVERT_TZ(from_unixtime(updated), '+00:00', '".$time_offset."') AS last_scanned, name, lat AS latitude, lon AS longitude FROM gym
 				WHERE from_unixtime(raid_end_timestamp) > UTC_TIMESTAMP()
 				ORDER BY raid_level DESC, start".$limit;
 
