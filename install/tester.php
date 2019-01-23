@@ -25,7 +25,8 @@ function db_test()
 	$mysqli = new mysqli(SYS_DB_HOST, SYS_DB_USER, SYS_DB_PSWD, SYS_DB_NAME, SYS_DB_PORT);
 
 	// Pokemon Test
-	$req = "SELECT COUNT(*) as total FROM pokemon";
+	$req = "SELECT id AS total FROM pokemon LIMIT 1";
+	//changed from "SELECT COUNT(*) AS total FROM pokemon" for larger databases
 	$result = $mysqli->query($req);
 
 	if (!is_object($result)) {
@@ -40,7 +41,7 @@ function db_test()
 	}
 
 	// Gym Test
-	$req = "SELECT COUNT(*) as total FROM gym";
+	$req = "SELECT COUNT(id) as total FROM gym LIMIT 1";
 	$result = $mysqli->query($req);
 
 	if (!is_object($result)) {
@@ -56,7 +57,7 @@ function db_test()
 
 
 	// Pokéstop Test
-	$req = "SELECT COUNT(*) as total FROM pokestop";
+	$req = "SELECT COUNT(id) as total FROM pokestop LIMIT 1";
 	$result = $mysqli->query($req);
 
 	if (!is_object($result)) {
