@@ -6,10 +6,10 @@
 
 $pos = !empty($_SERVER['HTTP_REFERER']) && strpos($_SERVER['HTTP_REFERER'], getenv('HTTP_HOST'));
 
-if ($pos === false) {
-	http_response_code(401);
-	die('Restricted access');
-}
+// if ($pos === false) {
+// 	http_response_code(401);
+// 	die('Restricted access');
+// }
 
 
 include_once('../../config.php');
@@ -519,7 +519,7 @@ switch ($request) {
 		*/
 
 		// check whether we could retrieve gym infos, otherwise use basic gym info
-		
+
 		if (!$gymData['gymDetails']['gymInfos']) {
 			$req = "SELECT id AS gym_id, team_id, guarding_pokemon_id AS guard_pokemon_id, lat AS latitude, lon AS longitude, (CONVERT_TZ(from_unixtime(updated), '+00:00', '".$time_offset."')) AS last_scanned, (6 - availble_slots) AS level
 				FROM gym WHERE id='".$gym_id."'";
@@ -671,7 +671,7 @@ switch ($request) {
 		$limit = " LIMIT ".($page * 10).",10";
 
 		$req = "SELECT id AS gym_id, raid_level AS level, raid_pokemon_id AS pokemon_id, raid_pokemon_cp AS cp, raid_pokemon_move_1 AS move_1, raid_pokemon_move_2 AS move_2, CONVERT_TZ(from_unixtime(raid_spawn_timestamp), '+00:00', '".$time_offset."') AS spawn, CONVERT_TZ(from_unixtime(raid_battle_timestamp), '+00:00', '".$time_offset."') AS start, CONVERT_TZ(from_unixtime(raid_end_timestamp), '+00:00', '".$time_offset."') AS end, CONVERT_TZ(from_unixtime(updated), '+00:00', '".$time_offset."') AS last_scanned, name, lat AS latitude, lon AS longitude FROM gym
-				WHERE from_unixtime(raid_end_timestamp) > UTC_TIMESTAMP()
+				WHERE from_unixtime(raid_end_timestamp) > NOW()
 				ORDER BY raid_level DESC, start".$limit;
 
 		$result = $mysqli->query($req);
@@ -681,13 +681,13 @@ switch ($request) {
 				$data->starttime = date("H:i", strtotime($data->start));
 				$data->endtime = date("H:i", strtotime($data->end));
 				$data->gym_id = str_replace('.', '_', $data->gym_id);
-				if (isset($data->move_1)) {
+				if (isset($data->move_1) && $data->move_1 != '0') {
 					$move1 = $data->move_1;
 					$data->quick_move = $move->$move1->name;
 				} else {
 					$data->quick_move = "?";
 				}
-				if (isset($data->move_2)) {
+				if (isset($data->move_2) && $data->move_1 != '0') {
 					$move2 = $data->move_2;
 					$data->charge_move = $move->$move2->name;
 				} else {
@@ -741,7 +741,7 @@ switch ($request) {
 
 		$limit = " LIMIT ".($page * 10).",10";
 
-		$req = "SELECT gymdetails.gym_id, name, team_id, total_cp, (6 - slots_available) as pokemon_count, (CONVERT_TZ(changed AS last_modified, '+00:00', '".$time_offset."')) as last_modified
+		$req = "SELECT id, name, team_id, total_cp, (6 - available_slots) as pokemon_count, (CONVERT_TZ(updated AS last_modified, '+00:00', '".$time_offset."')) as last_modified
 				FROM gymdetails
 				LEFT JOIN gym
 				ON gymdetails.gym_id = gym.gym_id
