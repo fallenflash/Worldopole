@@ -30,7 +30,7 @@ for ($iLat = 0; $iLat < $countLat;) {
         }
 
         // Get Parks from overpass
-        $req = '[timeout:600][out:json][date:"2017-01-22T00:00:00Z"][bbox:'.$minLatitude.','.$minLongitude.','.$maxLatitude.','.$maxLongitude.'];
+        $req = '[timeout:600][out:json][date:"2017-01-22T00:00:00Z"][bbox:' . $minLatitude . ',' . $minLongitude . ',' . $maxLatitude . ',' . $maxLongitude . '];
 				(
 					way["leisure"="park"];
 					way["leisure"="garden"];
@@ -83,13 +83,13 @@ for ($iLat = 0; $iLat < $countLat;) {
 				out meta geom;
 				>;
 				out skel qt;';
-        $endpoint = 'https://overpass-api.de/api/interpreter';
+        $endpoint = 'http://overpass-api.de/api/interpreter';
 
         $curl = curl_init($endpoint);
 
         curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, 'data='.urlencode($req));
-        curl_setopt($curl, CURLOPT_USERAGENT, 'Worldopole/NestUpdater '.$config->infos->site_name);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, 'data=' . urlencode($req));
+        curl_setopt($curl, CURLOPT_USERAGENT, 'Worldopole/NestUpdater ' . $config->infos->site_name);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 60);
         curl_setopt($curl, CURLOPT_TIMEOUT, 660);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -137,7 +137,7 @@ for ($iLat = 0; $iLat < $countLat;) {
                         } else {
                             $data['name'] = null;
                         }
-                        $data['id'] = $element['id'].'#'.$key;
+                        $data['id'] = $element['id'] . '#' . $key;
                         $data['bounds'] = $element['bounds'];
                         $parks[] = $data;
                     }
@@ -215,7 +215,7 @@ for ($iLat = 0; $iLat < $countLat;) {
             echo "Got Error 429: Trying again in 5 Minutes...\n";
             sleep(300);
         } else {
-            echo 'Error '.$status." while getting nests from overpass-turbo. Aborting Nest Update.\n";
+            echo 'Error ' . $status . " while getting nests from overpass-turbo. Aborting Nest Update.\n";
             touch($nests_parks_file, $prevNestTime);
             exit();
         }
